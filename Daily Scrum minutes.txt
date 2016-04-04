@@ -1,0 +1,31 @@
+Minutes - Example
+13.03.2016
+
+1) What have you done so far (after the last meeting)?
+2) What are you going to do next?
+3) Is there something that prevents you?
+4) How many hours did you work
+
+Student1
+1) I have created the database
+2) I'm going create a login system
+3) No
+4) 8 hours
+
+Student2
+1) blaa blaaa
+2) hmmmm
+3) No
+4) 7,5 hours
+
+Student3
+1) blaa blaaa
+2) hmmmm
+3) No
+4) 8 hours
+
+Student4
+1) blaa blaaa
+2) hmmmm
+3) No
+4) 7 hours

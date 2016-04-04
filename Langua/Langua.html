@@ -3,12 +3,81 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
+  <h1>Welcome to Langua!</h1>
+  
 
-  {{> hello}}
+<template name="Home">
+
+  {{#if currentUser}}
+  <div class="container">   
+    {{>navbar}}
+    <h1 class="center-align">Langua</h1>
+      <ul>
+        {{#each interpreter}}
+        <li>
+          {{name}}: {{lang}}
+        </li>
+        {{/each}}
+      </ul>
+  </div>
+    {{/if}}
+</template>
+
+  <template name="ProfileTemplate">
+      {{>navbar}}
+      <div class="container">
+      <h4>Username: {{email}}</h4>
+      <ul class="collapsible popout" data-collapsible="accordion">
+      Languages
+      <li></li>
+      </ul>
+      </div>
+  </template>
+
+  <template name="Settings">
+  {{>navbar}}
+  <div class="container">
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="name" type="text" class="">
+        <label for="name">Name</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="email" type="email" class="validate">
+        <label for="email"></label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <textarea id="description" class="materialize-textarea"></textarea>
+        <label for="description">Profile text</label>
+      </div>
+    </div>
+  </div>
+</template>
+
+
+  <template name="navbar">
+  <div class="navbar-fixed" >
+    <nav>
+      <div class="nav-wrapper">
+        <div class="container">
+          <a href="/" class="brand-logo center">Langua</a>
+          <ul id="nav-mobile" class="left hide-on-med-and-down" style="display:inline">
+
+          <li><a href="/ProfileTemplate">Profile</a></li>
+          <li><a href="/Settings">Settings</a></li>
+          <li>{{> loginButtons}}</li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  </template>
+
+
+  
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
-</template>

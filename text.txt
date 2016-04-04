@@ -1,0 +1,33 @@
+
+
+1. Backlog
+
+	- Looks very good! 
+
+2. Sprint
+
+	- Sprint2/Taskboard:
+
+ 		- Looks basically OK but sprint has been ended yesterday and
+		still tasks In Progress? Scrum end dates does not move...
+
+3. Documents
+
+	- 1st version of func. specs missing?
+
+
+4. Wiki/Minutes
+
+	- No minutes so far ...
+	
+
+5. GITHUB
+
+	- No link to GITHUB repository --> Add link to Wiki
+
+6. Reporting
+
+	- OK
+
+7. Other
+

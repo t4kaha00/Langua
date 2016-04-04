@@ -1,19 +1,20 @@
+Interpreterlist = new Mongo.Collection('interpreters');
+
+
+
 if (Meteor.isClient) {
-  // counter starts at 0
-  Session.setDefault('counter', 0);
-
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get('counter');
+  Template.Home.helpers({
+    'interpreter' : function(){
+      return Interpreterlist.find()
     }
   });
 
-  Template.hello.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set('counter', Session.get('counter') + 1);
+  Template.Home.events({
+    'click li': function(){
+
     }
   });
+  
 }
 
 if (Meteor.isServer) {
