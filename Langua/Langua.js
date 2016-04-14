@@ -1,20 +1,30 @@
 Interpreterlist = new Mongo.Collection('interpreters');
+Language = new Mongo.Collection('languages');
 
+Router.route('/', function() {
+  this.render('Home');
+});
 
+Router.route('/profile', {
+  template: 'ProfileTemplate',
+  data: function(){
+    return Meteor.user();
+  }
+});
+
+Router.route('/settings');
 
 if (Meteor.isClient) {
-  Template.Home.helpers({
-    'interpreter' : function(){
-      return Interpreterlist.find()
-    }
-  });
 
-  Template.Home.events({
-    'click li': function(){
+	Accounts.ui.config({
+		passwordSignupFields: "USERNAME_ONLY"
+	});
 
-    }
-  });
-  
+	Template.ProfileTemplate.helpers({
+		myProfile: function () {
+			return Meteor.user() === Meteor.users.findOne({username: this.username});
+		}
+	}); 
 }
 
 if (Meteor.isServer) {
