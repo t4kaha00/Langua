@@ -14,7 +14,7 @@
         <ul>
           {{#each interpreter}}
           <li>
-            {{name}}: {{lang}}
+            {{name}}: {{language}}
           </li>
           {{/each}}
         </ul>
@@ -25,12 +25,14 @@
   <template name="ProfileTemplate">
     {{>navbar}}
     <div class="container">
-      <h4>Username: {{email}}</h4>
+      <h4>Username: <strong>{{username}}</strong></h4>
       <ul class="collapsible popout" data-collapsible="accordion">
         <li>
           <label for="languages">Languages</label>
           <input id="language" type="text">
+          <button class="center-align" id="insert-lang">Insert</button>
         </li>
+       {{language}}
 
       </ul>
 
@@ -59,6 +61,12 @@
             <label>Languages</label>
             <input id="input-field col s12">
           </div>
+        </div>
+        <div class="row">
+          <ul>
+            <li>Languages</li>
+            
+          </ul>
         </div>
       </form>
       <button class="btn comment-btn center-align" type="submit" id="save-profile-btn">Save</button>

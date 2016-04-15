@@ -23,8 +23,33 @@ if (Meteor.isClient) {
 	Template.ProfileTemplate.helpers({
 		myProfile: function () {
 			return Meteor.user() === Meteor.users.findOne({username: this.username});
+		},
+
+		languages: function () {
+			return Language.find({language: this.language});
 		}
 	}); 
+
+	Template.ProfileTemplate.events({
+		"click #insert-lang": function (event) {
+			//Prevent default browser form submit
+			event.preventDefault();
+
+			console.log('adding languages');
+
+			var language = $('#language').val();
+
+			Language.insert({
+				language: languages
+			});
+
+			//clear form
+			$('#language').val('');
+			Router.go('/profile');
+		}
+	});
+
+
 }
 
 if (Meteor.isServer) {
