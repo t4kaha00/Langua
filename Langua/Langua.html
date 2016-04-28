@@ -11,32 +11,52 @@
     {{#if currentUser}}
     <div class="container">
       <h1 class="center-align">Langua</h1>
-        <ul>
-          {{#each interpreter}}
-          <li>
-            {{name}}: {{language}}
-          </li>
-          {{/each}}
-        </ul>
-      </div>
+      <h2 class="center-align">Welcome <a href="/profile/{{myname}}">{{myname}}</a></h2>
+    </div>
+    {{>interpreterTemplate}}
+    
     {{/if}}
   </template>
 
   <template name="ProfileTemplate">
     {{>navbar}}
+    {{#if currentUser}}
     <div class="container">
       <h4>Username: <strong>{{username}}</strong></h4>
-      <ul class="collapsible popout" data-collapsible="accordion">
-        <li>
-          <label for="languages">Languages</label>
-          <input id="language" type="text">
-          <button class="center-align" id="insert-lang">Insert</button>
-        </li>
-       {{language}}
-
-      </ul>
-
+      
+      {{> MessageTemplate}}
+      {{> languageTemplate}}
+      {{> addLanguage}}
     </div>
+    {{/if}}
+  </template>
+
+  <template name="languageTemplate">
+    <div class="container">
+      <h3 class="center">Languages:</h3>
+      <ul class="collapsible popout" data-collapsible="accordion"> 
+        {{#each interpreters}}
+        <li class="{{#if checked}}checked{{/if}}">
+          <button class="center-align waves-effect waves-light" id="delete-lang">&times;</button>
+          <input type="checkbox" checked="{{checked}}" class="toggle-checked" />
+          <span class="text">{{languages}}</span>
+        </li>
+        {{/each}}
+      </ul>
+    </div>  
+  </template>
+
+  <template name="addLanguage">
+      <button class="center-align" id="insert-lang">Add Language</button>
+      <input id="language" type="text"><br><br>
+  </template>
+
+  <template name="MessageTemplate">
+    
+      {{#each messages}}
+        <strong>{{name}}:</strong> {{text}}<br>
+      {{/each}}
+      <p>Message: <input type="text" id="message"></p>
   </template>
 
   <template name="Settings">
@@ -47,26 +67,14 @@
         <div class="row">
           <div class="input-field col s12">
             <label for="name">Name</label>
-            <input id="name" type="text" class="">
+            <input id="name" type="text" value="{{name}}">
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <label for="email">email</label>
-            <input id="email" type="email" class="validate">
+            <label for="email">Email</label>
+            <input id="email" type="email" class="validate" value="{{email}}">
           </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <label>Languages</label>
-            <input id="input-field col s12">
-          </div>
-        </div>
-        <div class="row">
-          <ul>
-            <li>Languages</li>
-            
-          </ul>
         </div>
       </form>
       <button class="btn comment-btn center-align" type="submit" id="save-profile-btn">Save</button>
@@ -93,6 +101,18 @@
     </div>
   </template>
 
-  <template name="details">
+  <template name="interpreterTemplate">
+    <!-- <li id="{{this.Id}}"> -->
 
+    <ul class="collapsible popout" data-collapsible="accordion">
+    {{#each interpreters}}
+    <li>
+      <span class="text"><a href="/profile/{{interpreterName}}">{{interpreterName}}</a></span>
+      <ul>
+        <li>{{language}}</li>
+      </ul>
+    </li>
+    {{/each}}
+    </ul>
+<!--   </li> -->
   </template>
