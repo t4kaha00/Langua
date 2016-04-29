@@ -13,8 +13,9 @@
       <h1 class="center-align">Langua</h1>
       <h2 class="center-align">Welcome <a href="/profile/{{myname}}">{{myname}}</a></h2>
     </div>
+    <div class="col">
     {{>interpreterTemplate}}
-    
+    </div>
     {{/if}}
   </template>
 
@@ -23,10 +24,14 @@
     {{#if currentUser}}
     <div class="container">
       <h4>Username: <strong>{{username}}</strong></h4>
+      <div class="col">
       
-      {{> MessageTemplate}}
-      {{> languageTemplate}}
+      {{> MessageTemplate}} 
       {{> addLanguage}}
+      <!-- {{#each name}} -->
+      {{> profileinterpreterTemplate}}
+      <!-- {{/each}} -->
+    </div>
     </div>
     {{/if}}
   </template>
@@ -42,6 +47,7 @@
           <span class="text">{{languages}}</span>
         </li>
         {{/each}}
+
       </ul>
     </div>  
   </template>
@@ -105,7 +111,7 @@
     <!-- <li id="{{this.Id}}"> -->
 
     <ul class="collapsible popout" data-collapsible="accordion">
-    {{#each interpreters}}
+    {{#each allinterpreters}}
     <li>
       <span class="text"><a href="/profile/{{interpreterName}}">{{interpreterName}}</a></span>
       <ul>
@@ -115,4 +121,14 @@
     {{/each}}
     </ul>
 <!--   </li> -->
+  </template>
+  <template name="profileinterpreterTemplate">
+    <ul class="collapsible popout" data-collapsible="accordion"> 
+    {{#each interpreters}}
+    <li class="{{#if checked}}checked{{/if}}">
+          <button class="center-align waves-effect waves-light" id="delete-lang">&times;</button>
+          <span class="text">{{language}}</span>
+        </li>
+    {{/each}}
+  </ul>
   </template>

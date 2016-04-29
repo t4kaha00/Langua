@@ -5,10 +5,12 @@ html {
 
 body {
     height:100%;
+
 }
 
 .container {
 	width: 90% !important;
+	background-color: #E0E0E0;
 }
 
 .collapsible-header {
@@ -17,4 +19,11 @@ body {
 
 .collapsible-body {
 	padding: 1em;
+}
+
+.col {
+	width: 50% !important;
+	margin: 0 5% !important;
+	display: inline-block;
+	background-color: lightblue;
 }

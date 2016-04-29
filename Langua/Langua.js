@@ -27,10 +27,6 @@ if (Meteor.isClient) {
 		passwordSignupFields: "USERNAME_ONLY"
 	});
 
-	Tracker.autorun(function (){
-		Meteor.subscribe("chatrooms");
-	});
-
 	Template.Home.helpers({
 		myname: function () {
 			return Meteor.user().profile.name;	
@@ -38,8 +34,14 @@ if (Meteor.isClient) {
 	});
 
 	Template.interpreterTemplate.helpers({
-		interpreters: function() {
+		allinterpreters: function () {
 			return Language.find({}, {language: this.language});
+		}
+	});
+
+	Template.profileinterpreterTemplate.helpers({
+		interpreters: function() {
+			return Language.find({interpreterName: this.username}, {language: this.language});
 		}
 	});
 
@@ -78,7 +80,7 @@ if (Meteor.isClient) {
 					interpreterId: Meteor.userId(),
 					interpreterName: Meteor.user().username,
 					language: language
-				});
+					});
 			}
 
 			Language.update(
@@ -132,15 +134,9 @@ if (Meteor.isClient) {
 	});
 
 	Template.MessageTemplate.helpers({
-		// 'messags' : function () {
-		// 	var result = ChatRooms.findOne({Id: Session.get('roomid')});
-		// 	if (result) {
-		// 		return result.messages;
-		// 	}	
-		// },
 
 		messages: function(){
-			return Messages.find({}, {sort: {time: -1}});
+			return Messages.find({}, {sort: {time: 1}});
 		}
 	});
 
@@ -177,8 +173,10 @@ if (Meteor.isClient) {
 	Template.languageTemplate.helpers({
 		languages: function () {
 			return Language.find({});
+		},
+		name: function () {
+			return Meteor.user().profile.name;
 		}
-
 	});
 
 	Template.Settings.helpers({
